@@ -26,6 +26,10 @@ npm run dev
 
 `npm run build` writes a static site to `dist/`. It uses relative paths and hash routing, so it works on GitHub Pages from any repo. The included workflow (`.github/workflows/deploy.yml`) builds and publishes on every push to `main`: in the repo's Settings → Pages, set the source to **GitHub Actions**.
 
+## Keeping the guide current
+
+`.github/workflows/sync-guide.yml` downloads Kanon's doc every morning (06:17 UTC). If anything changed it commits the new `src/data/guide.json`, new images and a line-level changelog, and the site redeploys. The Guide page then shows a *What's new* panel and marks new lines in gold. Run it on demand from the Actions tab (*Sync Kanon's guide → Run workflow*) or locally with `npm run sync`.
+
 ## Live field bosses
 
 Set `VITE_BOSS_FEED_URL` (a repo variable used by the workflow, or a `.env` file locally) to a JSON endpoint shaped like:

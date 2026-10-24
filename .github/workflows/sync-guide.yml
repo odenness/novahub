@@ -1,0 +1,44 @@
+name: Sync Kanon's guide
+
+# Pulls Kanon's AION 2 Bible from Google Docs every morning. When the doc has changed it
+# commits the new guide data (with a changelog for the "What's new" panel), and the
+# deploy workflow then republishes the site.
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/sync-guide.mjs
+      - .github/workflows/sync-guide.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-guide
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run sync
+      - name: Commit changes
+        run: |
+          if git diff --quiet && [ -z "$(git ls-files --others --exclude-standard)" ]; then
+            echo "Guide unchanged."
+            exit 0
+          fi
+          git config user.name "novahub-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A src/data public/guide content/snapshots
+          git commit -m "Sync Kanon's guide ($(date -u +%Y-%m-%d))"
+          git push

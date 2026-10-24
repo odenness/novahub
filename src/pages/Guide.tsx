@@ -1,17 +1,53 @@
 import { motion } from 'motion/react'
-import { ArrowLeft, ArrowRight, ListTree } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ListTree, Sparkles } from 'lucide-react'
 import { useEffect, useState, type ReactNode } from 'react'
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 import { PageTitle } from '../components/ui'
 import { useStored } from '../lib/hooks'
-import { chapters, chapterSummary, guideImg, guideMeta, headingText, type Block, type Run } from '../lib/guide'
+import { changelog, chapters, chapterSummary, guideImg, guideMeta, headingText, latestAdded, type Block, type Run } from '../lib/guide'
+
+const latest = changelog[0]
+const updatedIds = new Set(latest?.changes.map((c) => c.id) ?? [])
+const updatedOn = latest ? new Date(latest.syncedAt).toLocaleDateString([], { day: 'numeric', month: 'short' }) : ''
+const plainLine = (l: string) => l.replace(/^\*+\s*/, '').trim()
+
+/** The newest edits to Kanon's doc, so returning readers know what to re-read. */
+function WhatsNew() {
+  const [open, setOpen] = useState(false)
+  if (!latest) return null
+  const changes = latest.changes.filter((c) => c.added.length)
+  if (!changes.length) return null
+  return (
+    <section className="mb-8 rounded-3xl border border-elyos-400/25 bg-elyos-400/[0.06] p-5">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 className="flex items-center gap-2 font-display text-[22px] text-parch-50"><Sparkles className="size-5 text-elyos-400" /> What's new in the guide</h2>
+        <span className="text-[13px] text-parch-500">Picked up on {updatedOn}{latest.docLastUpdated ? `, doc says last updated ${latest.docLastUpdated}` : ''}</span>
+      </div>
+      <ul className="mt-3 space-y-3">
+        {(open ? changes : changes.slice(0, 3)).map((c) => (
+          <li key={c.id}>
+            <Link to={`/guide/${c.id}`} className="font-display text-lg text-elyos-200 hover:text-elyos-100">{headingText(c.title)}</Link>
+            <span className="ml-2 text-[13px] text-parch-500">{c.added.length} new or changed line{c.added.length === 1 ? '' : 's'}</span>
+            <ul className="mt-1 space-y-0.5">
+              {c.added.slice(0, 2).map((l) => <li key={l} className="line-clamp-1 text-[14px] text-parch-300">{plainLine(l)}</li>)}
+            </ul>
+          </li>
+        ))}
+      </ul>
+      {changes.length > 3 && (
+        <button onClick={() => setOpen((o) => !o)} className="mt-3 text-sm text-aether-300">{open ? 'Show less' : `Show all ${changes.length} updated chapters`}</button>
+      )}
+    </section>
+  )
+}
 
 export function GuideIndex() {
   const [lastId] = useStored<string | null>('nh.lastChapter', null)
   const synced = new Date(guideMeta.syncedAt).toLocaleDateString([], { day: 'numeric', month: 'long' })
   return (
     <div>
-      <PageTitle title="The guide" lead={<>Kanon's AION 2 guide, chapter by chapter. Copied from the public doc on {synced}; <a className="text-aether-300 underline decoration-aether-300/30 underline-offset-4" href={guideMeta.docUrl} target="_blank" rel="noreferrer">read the original</a>.</>} />
+      <PageTitle title="The guide" lead={<>Kanon's AION 2 Bible, chapter by chapter. NovaHub checks the doc every day; this copy is from {synced}. <a className="text-aether-300 underline decoration-aether-300/30 underline-offset-4" href={guideMeta.docUrl} target="_blank" rel="noreferrer">read the original</a>.</>} />
+      <WhatsNew />
       <ol className="grid gap-3 md:grid-cols-2">
         {chapters.map((c) => (
           <li key={c.id}>
@@ -21,6 +57,7 @@ export function GuideIndex() {
                 <span className="block font-display text-[19px] leading-snug text-parch-50">{c.title}</span>
                 <span className="mt-1 line-clamp-2 block text-[14px] leading-relaxed text-parch-500">{chapterSummary(c)}</span>
                 {c.id === lastId && <span className="mt-2 block text-[13px] text-aether-300">Where you left off</span>}
+                {updatedIds.has(c.id) && <span className="mt-2 inline-flex items-center gap-1 rounded-lg bg-elyos-400/12 px-2 py-0.5 text-[12px] text-elyos-200"><Sparkles className="size-3" /> Updated {updatedOn}</span>}
               </span>
             </Link>
           </li>
@@ -41,6 +78,7 @@ export function Chapter() {
   if (idx < 0) return <Navigate to="/guide" replace />
   const c = chapters[idx]
   const prev = chapters[idx - 1], next = chapters[idx + 1]
+  const fresh = latestAdded(c.id)
   const toc = c.blocks.map((b, i) => (b.type === 'heading' && b.level <= 3 ? { i, text: headingText(b.text) } : null)).filter(Boolean) as { i: number; text: string }[]
 
   return (
@@ -49,6 +87,9 @@ export function Chapter() {
         <Link to="/guide" className="mb-4 inline-flex items-center gap-1.5 text-sm text-parch-500 hover:text-parch-100"><ArrowLeft className="size-4" /> All chapters</Link>
         <div className="text-[14px] text-aether-300">{c.number ? `Chapter ${c.number}` : 'Before you start'}</div>
         <h1 className="mb-6 font-display text-[34px] leading-[1.1] text-parch-50 md:text-[44px]">{c.title}</h1>
+        {fresh.size > 0 && (
+          <p className="-mt-3 mb-6 flex items-center gap-2 text-[14px] text-elyos-200"><Sparkles className="size-4" /> Updated {updatedOn}. New and changed lines are marked in gold.</p>
+        )}
 
         {toc.length > 2 && (
           <div className="mb-6 lg:hidden">
@@ -60,7 +101,7 @@ export function Chapter() {
         )}
 
         <div className="space-y-4 text-[16px] leading-[1.7] text-parch-100">
-          {c.blocks.map((b, i) => <BlockView key={i} b={b} i={i} />)}
+          {c.blocks.map((b, i) => <BlockView key={i} b={b} i={i} fresh={fresh} />)}
         </div>
 
         <nav className="mt-12 grid gap-3 sm:grid-cols-2" aria-label="Chapters">
@@ -122,6 +163,7 @@ function Runs({ runs }: { runs: Run[] }) {
         let node: ReactNode = r.t
         if (r.b) node = <strong className="font-semibold text-parch-50">{node}</strong>
         if (r.i) node = <em>{node}</em>
+        if (r.s) node = <s className="text-parch-500">{node}</s>
         if (r.u && !r.href) node = <span className="underline decoration-white/30 underline-offset-4">{node}</span>
         if (r.hl) node = <mark className="rounded bg-elyos-400/20 px-0.5 text-elyos-100">{node}</mark>
         if (r.href) node = <a href={r.href} target="_blank" rel="noreferrer" className="text-aether-300 underline decoration-aether-300/30 underline-offset-4">{node}</a>
@@ -132,22 +174,25 @@ function Runs({ runs }: { runs: Run[] }) {
   )
 }
 
-function BlockView({ b, i }: { b: Block; i: number }) {
+const plainRuns = (runs: Run[]) => runs.map((r) => r.t).join('').replace(/\s+/g, ' ').trim()
+const freshCls = 'border-l-2 border-elyos-400 bg-elyos-400/[0.06] -ml-3 pl-[10px] rounded-r-lg'
+
+function BlockView({ b, i, fresh }: { b: Block; i: number; fresh: Set<string> }) {
   switch (b.type) {
     case 'heading': {
       const cls = b.level <= 2 ? 'pt-6 font-display text-[26px] leading-tight text-parch-50' : 'pt-3 font-display text-[20px] text-elyos-200'
-      return <h2 id={`b${i}`} className={`scroll-mt-28 ${cls}`}>{headingText(b.text)}</h2>
+      return <h2 id={`b${i}`} className={`scroll-mt-28 ${cls} ${fresh.has(b.text) ? 'text-elyos-200' : ''}`}>{headingText(b.text)}</h2>
     }
     case 'p': {
       const text = b.runs.map((r) => r.t).join('').trim()
       if (!text || text === '—') return null
-      return <p><Runs runs={b.runs} /></p>
+      return <p className={fresh.has(plainRuns(b.runs)) ? freshCls : undefined}><Runs runs={b.runs} /></p>
     }
     case 'list': {
       const Tag = b.ordered ? 'ol' : 'ul'
       return (
         <Tag className={`space-y-1.5 pl-5 ${b.ordered ? 'list-decimal' : 'list-disc'} marker:text-aether-400`}>
-          {b.items.map((it, k) => <li key={k} style={{ marginLeft: it.level * 18 }}><Runs runs={it.runs} /></li>)}
+          {b.items.map((it, k) => <li key={k} style={{ marginLeft: it.level * 18 }} className={fresh.has(plainRuns(it.runs)) ? 'rounded-r-lg bg-elyos-400/[0.08] text-elyos-100' : undefined}><Runs runs={it.runs} /></li>)}
         </Tag>
       )
     }
@@ -159,5 +204,25 @@ function BlockView({ b, i }: { b: Block; i: number }) {
       )
     case 'hr':
       return <hr className="my-6 border-white/10" />
+    case 'table':
+      return (
+        <div className="-mx-4 overflow-x-auto px-4 md:mx-0 md:px-0">
+          <table className="w-full border-separate border-spacing-0 overflow-hidden rounded-2xl border border-white/[0.08] text-[14px] leading-snug">
+            <tbody>
+              {b.rows.map((row, r) => (
+                <tr key={r} className={r === 0 ? 'bg-white/[0.05] text-parch-50' : 'odd:bg-white/[0.02]'}>
+                  {row.map((cell, k) => (
+                    <td key={k} className="border-b border-white/[0.06] px-3 py-2 align-top">
+                      {cell.map((part, n) => 'img' in part
+                        ? <img key={n} src={guideImg(part.img.src)} alt="" loading="lazy" className="my-1 h-auto max-w-full rounded-lg" style={part.img.w ? { width: Math.round(part.img.w * 1.33) } : undefined} />
+                        : <div key={n}><Runs runs={part.runs} /></div>)}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
   }
 }
