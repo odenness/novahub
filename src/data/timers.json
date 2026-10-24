@@ -1,0 +1,173 @@
+{
+ "meta": {
+  "source": "https://shugo.gg/timers.json",
+  "updatedAt": "2026-10-05",
+  "fetchedAt": "2026-10-07T16:16:24.802Z",
+  "region": "Europe",
+  "note": "Europe servers run on Central European time (Berlin, same as Paris), and every event below follows that clock (the local hour stays the same when the clocks go back on October 25). Daily and weekly resets happen at one moment on every Global server, 16:00 Korean time (07:00 UTC): 09:00 in Europe, 08:00 from October 25. NCSOFT has not published the Global event times; if one is off on your server, tell us on Discord."
+ },
+ "events": [
+  {
+   "id": "rift",
+   "name": "Spacetime Rift",
+   "kind": "pvp",
+   "description": "The portal only stays open for the first 10 minutes; once inside the event runs for a full hour: cross-faction PvP, Sealed Dungeons, special quests and Abyss Points.",
+   "durationMinutes": 60,
+   "portalMinutes": 10,
+   "schedule": {
+    "timeZone": "Europe/Berlin",
+    "type": "daily",
+    "times": [
+     "02:00",
+     "05:00",
+     "08:00",
+     "11:00",
+     "14:00",
+     "17:00",
+     "20:00",
+     "23:00"
+    ]
+   }
+  },
+  {
+   "id": "shugo-festival",
+   "name": "Shugo Festival",
+   "kind": "event",
+   "description": "4-9 player minigames every hour on the hour, 10 minutes long: one random game from the pool (Jump Jump, Nyerk Shooter, Hidden Lugi, Goldrin's Treasure…). Rewards include gear, Abyss Points, Wisdom Stones and Daevanion Crystals.",
+   "durationMinutes": 10,
+   "portalMinutes": null,
+   "schedule": {
+    "timeZone": "Europe/Berlin",
+    "type": "hourly",
+    "minute": 0
+   }
+  },
+  {
+   "id": "dimensional-invasion",
+   "name": "Dimensional Invasion",
+   "kind": "event",
+   "description": "Field defense event every hour at :30.",
+   "durationMinutes": 15,
+   "portalMinutes": null,
+   "schedule": {
+    "timeZone": "Europe/Berlin",
+    "type": "hourly",
+    "minute": 30
+   }
+  },
+  {
+   "id": "artifact-siege",
+   "name": "Artifact Siege",
+   "kind": "abyss",
+   "description": "Lower and Middle Abyss artifact battle; the winning faction gains access to the Abyss Corridor. Since the September 30 Korea patch the Dimensional Core gets the Decline of Power debuff after 8 minutes.",
+   "durationMinutes": 30,
+   "portalMinutes": null,
+   "schedule": {
+    "timeZone": "Europe/Berlin",
+    "type": "weekly",
+    "days": [
+     "mon",
+     "thu",
+     "sat"
+    ],
+    "times": [
+     "21:00"
+    ]
+   }
+  },
+  {
+   "id": "siege-bosses",
+   "name": "Siege Bosses",
+   "kind": "boss",
+   "description": "Right after the Artifact Siege: Executors Tamasa, Agro and Kaira in the Lower Layer, Executioner Dramos, Traitor Dukal and Destroyer Maraka in the Middle Layer.",
+   "durationMinutes": 30,
+   "portalMinutes": null,
+   "schedule": {
+    "timeZone": "Europe/Berlin",
+    "type": "weekly",
+    "days": [
+     "mon",
+     "thu",
+     "sat"
+    ],
+    "times": [
+     "21:30"
+    ]
+   }
+  },
+  {
+   "id": "guardian-nahma",
+   "name": "Guardian General Nahma",
+   "kind": "boss",
+   "description": "Guardian General Nahma and Enraged Guardian General Nahma spawn in the Lower and Middle Abyss.",
+   "durationMinutes": 30,
+   "portalMinutes": null,
+   "schedule": {
+    "timeZone": "Europe/Berlin",
+    "type": "weekly",
+    "days": [
+     "fri",
+     "sun"
+    ],
+    "times": [
+     "21:00"
+    ]
+   }
+  },
+  {
+   "id": "watcher-kaira",
+   "name": "Watcher Kaira",
+   "kind": "boss",
+   "description": "Lower Abyss field boss that appears at a random spot on a fixed cycle (every 4 hours on Korea and Taiwan, every 3 hours on Global) and leaves 30 minutes later.",
+   "durationMinutes": 30,
+   "portalMinutes": null,
+   "schedule": {
+    "timeZone": "Europe/Berlin",
+    "type": "daily",
+    "times": [
+     "01:00",
+     "04:00",
+     "07:00",
+     "10:00",
+     "13:00",
+     "16:00",
+     "19:00",
+     "22:00"
+    ]
+   }
+  },
+  {
+   "id": "daily-reset",
+   "name": "Daily reset",
+   "kind": "reset",
+   "description": "Daily quests, dungeon entries, Transcendence charges and Shugo Festival keys refresh.",
+   "durationMinutes": 0,
+   "portalMinutes": null,
+   "schedule": {
+    "timeZone": "Asia/Seoul",
+    "type": "daily",
+    "times": [
+     "16:00"
+    ]
+   }
+  },
+  {
+   "id": "weekly-reset",
+   "name": "Weekly reset",
+   "kind": "reset",
+   "description": "Weekly activities and raids refresh together with the daily reset of that day (Wednesday).",
+   "durationMinutes": 0,
+   "portalMinutes": null,
+   "schedule": {
+    "timeZone": "Asia/Seoul",
+    "type": "weekly",
+    "days": [
+     "wed"
+    ],
+    "times": [
+     "16:00"
+    ]
+   }
+  }
+ ]
+}

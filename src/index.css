@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Marcellus', ui-serif, Georgia, serif;
+  --font-sans: 'Figtree', ui-sans-serif, system-ui, sans-serif;
+
+  --color-abyss-950: #0e0a20;
+  --color-abyss-900: #16112e;
+  --color-abyss-850: #1c1639;
+  --color-abyss-800: #241d47;
+  --color-abyss-700: #33295f;
+  --color-abyss-600: #4a3d82;
+
+  --color-aether-200: #b9f4ec;
+  --color-aether-300: #8eeadf;
+  --color-aether-400: #5fe0d0;
+  --color-aether-500: #33c2b1;
+
+  --color-elyos-200: #f6e2b0;
+  --color-elyos-300: #efd28d;
+  --color-elyos-400: #e8c372;
+  --color-elyos-500: #c9a04c;
+
+  --color-asmo-400: #e0506a;
+  --color-asmo-500: #c23a55;
+
+  --color-parch-50: #f6f2fb;
+  --color-parch-100: #ece6f5;
+  --color-parch-300: #c3b9d8;
+  --color-parch-500: #8f84ab;
+
+  --color-grade-common: #c9c4b6;
+  --color-grade-rare: #6fd36a;
+  --color-grade-epic: #4fa3ff;
+  --color-grade-unique: #f2c94c;
+}
+
+@layer base {
+  html { color-scheme: dark; -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply bg-abyss-900 font-sans text-parch-100 antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 85% -10%, rgb(95 224 208 / 0.07), transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, rgb(232 195 114 / 0.05), transparent 60%);
+    background-attachment: fixed;
+    min-height: 100dvh;
+  }
+  :focus-visible { outline: 2px solid var(--color-aether-400); outline-offset: 2px; border-radius: 6px; }
+  ::selection { background: rgb(95 224 208 / 0.3); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.pb-safe { padding-bottom: max(env(safe-area-inset-bottom), 0.5rem); }
