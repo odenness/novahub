@@ -3,7 +3,14 @@ import { useMemo } from 'react'
 import { events, occurrences, isLive, countdown, clock, kindStyle, type Occurrence } from '../lib/time'
 
 const C = 200 // centre
-const angle = (t: number, dayStart: number) => ((t - dayStart) / 86_400_000) * 360 - 90
+/** Angle by local clock time, so days with a clock change (23 or 25 hours) still fit the dial. */
+const angle = (t: number, dayStart: number) => {
+  if (t <= dayStart) return -90
+  const d = new Date(t)
+  const sameDay = d.toDateString() === new Date(dayStart).toDateString()
+  const h = sameDay ? d.getHours() + d.getMinutes() / 60 : 24
+  return (h / 24) * 360 - 90
+}
 const pt = (deg: number, r: number) => [C + r * Math.cos((deg * Math.PI) / 180), C + r * Math.sin((deg * Math.PI) / 180)]
 
 function arc(a0: number, a1: number, r: number) {
@@ -18,7 +25,7 @@ function arc(a0: number, a1: number, r: number) {
  */
 export function Dial({ now, selected, onSelect }: { now: number; selected: string | null; onSelect: (id: string) => void }) {
   const dayStart = new Date(new Date(now).toDateString()).getTime()
-  const dayEnd = dayStart + 86_400_000
+  const dayEnd = new Date(new Date(dayStart + 30 * 3_600_000).toDateString()).getTime() // next local midnight
 
   const { tracks, hourly, resets } = useMemo(() => {
     const tracks: { id: string; occ: Occurrence[] }[] = []
