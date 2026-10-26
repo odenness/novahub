@@ -1,5 +1,21 @@
 [
  {
+  "syncedAt": "2026-10-26T06:57:08.566Z",
+  "docLastUpdated": "/20/2026",
+  "changes": [
+   {
+    "id": "intro",
+    "title": "Introduction",
+    "added": [
+     "***Update Note 10/25/2026: Updated most of the stuff, however stat efficiency for Global is different, will be updated soon"
+    ],
+    "removed": [
+     "***Update Note 10/4/2026: There are a LOT of changes for Global. I’ve updated everything we know so far. I’ve added a Chapter 12: Class Builds section that links you to builds."
+    ]
+   }
+  ]
+ },
+ {
   "syncedAt": "2026-10-24T22:46:17.316Z",
   "docLastUpdated": "/20/2026",
   "changes": [
