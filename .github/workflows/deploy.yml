@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -42,5 +43,19 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # If Pages is still set to "Deploy from a branch", GitHub also publishes the raw source
+      # (a white page) on every commit. Wait for that to finish so this build lands last.
+      # Once Settings → Pages → Source is "GitHub Actions", no such run appears and this skips.
+      - name: Wait for any branch-based Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          since=$(date -u -d '-15 minutes' +%Y-%m-%dT%H:%M:%SZ)
+          for i in $(seq 1 30); do
+            busy=$(gh api "repos/${{ github.repository }}/actions/runs?per_page=20&created=>$since" \
+              --jq '[.workflow_runs[] | select(.name == "pages build and deployment" and .status != "completed")] | length')
+            if [ "${busy:-0}" = "0" ] && [ "$i" -gt 3 ]; then echo "Nothing to wait for."; exit 0; fi
+            echo "Branch build still running, waiting…"; sleep 10
+          done
       - id: deployment
         uses: actions/deploy-pages@v4
