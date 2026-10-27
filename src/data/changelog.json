@@ -1,5 +1,104 @@
 [
  {
+  "syncedAt": "2026-10-27T06:45:50.715Z",
+  "docLastUpdated": "10/26/2026",
+  "changes": [
+   {
+    "id": "intro",
+    "title": "Introduction",
+    "added": [
+     "Last Updated: 10/26/2026",
+     "*Update Notes: Currently testing Global Stat Efficiency values with AionLab, will update a Global version of End-Game Damage Effeciency Numbers",
+     "Updated Global Genus First/CogBoard",
+     "Updated Stat Value TLDR",
+     "Created Chapter 12: Global Aulamus vs Kromede"
+    ],
+    "removed": [
+     "Last Updated: /20/2026",
+     "***Update Note 10/25/2026: Updated most of the stuff, however stat efficiency for Global is different, will be updated soon"
+    ]
+   },
+   {
+    "id": "ch8",
+    "title": "PET GENUS",
+    "added": [
+     "Note: I’ve listed out BIS lines but for Lines 2, 8, it’s recommended to ignore these considering it would be way too expensive to try and get these stats. It’s not worth the cost of Crystals and Kinah.",
+     "Slots 4: Damage Boost, PVE Damage Boost, Critical Damage Boost"
+    ],
+    "removed": [
+     "Note: I’ve listed out BIS lines but for Lines 2, 8, it’s recommended to ignore these considering it would be way too expensive to try and get these stats. It’s not worth the cost of Cyrstals and Kinah.",
+     "Slots 4: Critical Damage Boost > Damage Boost, PVE Damage Boost"
+    ]
+   },
+   {
+    "id": "ch11",
+    "title": "HOW STATS WORK (DAMAGE FORMULA)",
+    "added": [
+     "End-Game (KR) Damage Efficiency Numbers (GLOBAL IS DIFFERENT, will update Global numbers soon)",
+     "KR: Double Chance > Front/Back Attack Boost > Weapon Damage Boost > ≈ Critical Damage Boost > Damage Boost",
+     "GLOBAL: Double Chance > Front/Back Attack Boost > Weapon Damage Boost > Damage Boost > Critical Damage Boost",
+     "(Critical Damage Boost loses effectiveness due to Global’s 50% Crit Cap)",
+     "KR & GLOBAL",
+     "KR",
+     "Global",
+     "Each hit is 2% of the Damage (needs more testing)"
+    ],
+    "removed": [
+     "End-Game (KR) Damage Efficiency Numbers",
+     "Double Chance > Front/Back Attack Boost > Weapon Damage Boost > ≈ Critical Damage Boost > Damage Boost"
+    ]
+   },
+   {
+    "id": "ch12",
+    "title": "GLOBAL AULAMUS VS KROMEDE",
+    "added": [
+     "Spent time with AionLab (damage formula founder) to crunch numbers on the Aulamus vs Kromede Weapon on the Global servers. We based the tests off of my Gladiator @ 180k CP. These numbers will vary depending on what your stats are and what class you're playing.",
+     "If fully maxed and with BIS lines on both weapons, Kromede is better in terms of pure damage but by very little.",
+     "Aulamus (ILVL 70)",
+     "4 Stat Lines (base)",
+     "Amp 3 Max",
+     "Kromede (ILVL 86)",
+     "3 Stat Lines (base)",
+     "Amp 5 Max",
+     "2m extra Range (not factored into DPS comparison)",
+     "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
+     "Kromede offers more attack and Damage Boost from Amp levels (excluding the range)",
+     "Attack difference of 131 = 3.61% more damage for Kromede",
+     "Damage Boost difference = 0.8%~0.9% more damage for Kromede",
+     "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
+     "Aulamus offers an additional stat line, in this case we used Might",
+     "Attack Increase 2.9% (29 Might stat line) = 1.87% more damage for Aulamus",
+     "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
+     "When comparing only the attack and damage boost difference, Kromede deals 4.53% more damage",
+     "When comparing only the attack increase from Might (2.9%), Aulamus deals 1.87% more damage",
+     "When factoring only the attack difference, damage boost difference, and attack increase (extra stat line being Might) difference, Kromede deals 2.61% more damage than Aulamus",
+     "AMP 3 Kromede vs Amp 3 Aulamus (extra line being Might for Aulamus), Kromede is better by less than 1%",
+     "Note: Kromede wins by less the stronger the character",
+     "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ",
+     "If Aulamus has either a Damage Boost (2.8%), Weapon Damage Boost (4%), Combat Speed, or Multi-hit (needs more testing but likely as well) line advantage while maintaining its Might Advantage, then Aulamus is better. In other words, if Aulamus has a 2 line advantage it’s better.",
+     "Example",
+     "Amp 5 Kromede",
+     "Accuracy",
+     "Weapon Damage Boost",
+     "Combat speed",
+     "vs",
+     "Amp 3 Aulamus",
+     "Damage Boost",
+     "Weapon Damage Boost",
+     "Combat Speed",
+     "Might",
+     "In this case, Aulamus is better",
+     "Note: You can transfer Aulamus into crafted weapons starting from ILVL 78 White Dragon (tier 2 crafted let’s call it) vs Kromede being able to be transferred starting from ILVL 94 Wise Dragon (tier 3) should you choose to do so.",
+     "Note 2: It is very expensive to reroll lines and push from Amp 3 to Amp 5. Remember, Kromede offers 3 stat lines vs Aulamus offering 4 stat lines, vs Crafted offering 5 stat lines at base."
+    ],
+    "removed": [
+     "Notmeter (the main site to track performance/dps/parses) now has a section that showcases all builds and loadouts across all classes. Link:",
+     "https://notmeter.com/?view=setup-guide"
+    ]
+   }
+  ]
+ },
+ {
   "syncedAt": "2026-10-26T06:57:08.566Z",
   "docLastUpdated": "/20/2026",
   "changes": [
