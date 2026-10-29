@@ -1,5 +1,31 @@
 [
  {
+  "syncedAt": "2026-10-29T06:33:36.414Z",
+  "docLastUpdated": "10/26/2026",
+  "changes": [
+   {
+    "id": "intro",
+    "title": "Introduction",
+    "added": [
+     "Created CH 12: Aulamus vs Kromede"
+    ],
+    "removed": [
+     "Created Chapter 12: Global Aulamus vs Kromede"
+    ]
+   },
+   {
+    "id": "ch12",
+    "title": "GLOBAL AULAMUS VS KROMEDE",
+    "added": [
+     "Note: You can now transfer Aulamus and Kromede into the crafted version of the same ILVL as of the 10/28 update. True Dragon (Tier 1 crafted) can be upgraded to Amp 3 now, White Dragon (Tier 2 crafted) can be upgraded to Amp 5 now. Aulamus remains the same with Amp 3 being max."
+    ],
+    "removed": [
+     "Note: You can transfer Aulamus into crafted weapons starting from ILVL 78 White Dragon (tier 2 crafted let’s call it) vs Kromede being able to be transferred starting from ILVL 94 Wise Dragon (tier 3) should you choose to do so."
+    ]
+   }
+  ]
+ },
+ {
   "syncedAt": "2026-10-27T06:45:50.715Z",
   "docLastUpdated": "10/26/2026",
   "changes": [
