@@ -1,5 +1,31 @@
 [
  {
+  "syncedAt": "2026-10-31T06:26:39.888Z",
+  "docLastUpdated": "10/26/2026",
+  "changes": [
+   {
+    "id": "ch6",
+    "title": "ARCANA",
+    "added": [
+     "The 3 most important lines here are Chalice (Time - Combat Speed), Bell (Destruction - Attack Increase % ), and Mirror (Wisdom - Double Chance). For Global you can consider going Primal Vigor on Mirror which would change Wisdom/Double Chance to Illusion/CDR. Some classes are especially CDR dependent such as Sorc."
+    ],
+    "removed": [
+     "The 3 most important lines here are Chalice (Time - Combat Speed), Bell (Destruction - Attack Increase % ), and Mirror (Wisdom - Double Chance)"
+    ]
+   },
+   {
+    "id": "ch11",
+    "title": "HOW STATS WORK (DAMAGE FORMULA)",
+    "added": [
+     "Each hit is 2% of the Damage (needs more testing, rumored to be higher on bosses)"
+    ],
+    "removed": [
+     "Each hit is 2% of the Damage (needs more testing)"
+    ]
+   }
+  ]
+ },
+ {
   "syncedAt": "2026-10-29T06:33:36.414Z",
   "docLastUpdated": "10/26/2026",
   "changes": [
