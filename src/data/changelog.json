@@ -1,5 +1,19 @@
 [
  {
+  "syncedAt": "2026-11-04T06:30:53.427Z",
+  "docLastUpdated": "10/26/2026",
+  "changes": [
+   {
+    "id": "ch8",
+    "title": "PET GENUS",
+    "added": [
+     "* Want to emphasize taking Crit/Accuracy over Power Shard for Slots 3, 6, 9 if you are not at the crit/accuracy caps. Power Shard is only better if you have hit the caps. Caps are currently unknown for Raids."
+    ],
+    "removed": []
+   }
+  ]
+ },
+ {
   "syncedAt": "2026-10-31T06:26:39.888Z",
   "docLastUpdated": "10/26/2026",
   "changes": [
