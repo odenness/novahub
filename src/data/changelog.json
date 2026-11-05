@@ -1,5 +1,40 @@
 [
  {
+  "syncedAt": "2026-11-05T06:30:17.715Z",
+  "docLastUpdated": "11/05/2026",
+  "changes": [
+   {
+    "id": "intro",
+    "title": "Introduction",
+    "added": [
+     "Last Updated: 11/05/2026",
+     "Updated Global Ludra Hard Caps"
+    ],
+    "removed": [
+     "Last Updated: 10/26/2026",
+     "Updated Global Genus First/CogBoard",
+     "Updated Stat Value TLDR"
+    ]
+   },
+   {
+    "id": "ch3",
+    "title": "IDEAL STAT LINES",
+    "added": [
+     "Ludra Hard Raid (Global)",
+     "≈ 1200 ~ 1300 Accuracy",
+     "≈ 1600 ~ 1700 Crit",
+     "Corroded Raid (KR)"
+    ],
+    "removed": [
+     "Projected Ludra Raid (Global)",
+     "1200 Accuracy",
+     "1200 ~ 1400 Crit",
+     "Corroded Raid"
+    ]
+   }
+  ]
+ },
+ {
   "syncedAt": "2026-11-04T06:30:53.427Z",
   "docLastUpdated": "10/26/2026",
   "changes": [
