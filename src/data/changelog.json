@@ -1,5 +1,31 @@
 [
  {
+  "syncedAt": "2026-11-06T06:30:30.689Z",
+  "docLastUpdated": "11/05/2026",
+  "changes": [
+   {
+    "id": "intro",
+    "title": "Introduction",
+    "added": [
+     "Added First Clear Group DPS measurements for Ludra Hard Global"
+    ],
+    "removed": []
+   },
+   {
+    "id": "ch3",
+    "title": "IDEAL STAT LINES",
+    "added": [
+     "First Clear Group (Failure Guild) avg DPS per person",
+     "Boss 1 (Rahul): ≈ 123k",
+     "Boss 2 (Ketu): ≈ 108k",
+     "Ludra: ≈ 76k DPS with ≈ 2.5 minutes to spare",
+     "*Note: Failure spec’d heavily into defense/survivability, going as far as taking defensive stigmas at the cost of dmg"
+    ],
+    "removed": []
+   }
+  ]
+ },
+ {
   "syncedAt": "2026-11-05T06:30:17.715Z",
   "docLastUpdated": "11/05/2026",
   "changes": [
