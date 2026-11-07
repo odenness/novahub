@@ -1,5 +1,28 @@
 [
  {
+  "syncedAt": "2026-11-07T06:26:50.582Z",
+  "docLastUpdated": "11/05/2026",
+  "changes": [
+   {
+    "id": "ch3",
+    "title": "IDEAL STAT LINES",
+    "added": [
+     "First Bosses (Rahu, Ketu) ≈ 1200 Accuracy",
+     "First Bosses (Rahu, Ketu) ≈ 1600 Crit Second Boss (Ludra) ≈ 1200 Accuracy",
+     "Second Boss (Ludra) ≈ 1700 Crit",
+     "*Note: Above is total Accuracy and Crit including all Accuracy/Crit stats + buffs",
+     "Boss 1 (Rahu): ≈ 123k"
+    ],
+    "removed": [
+     "*These requirements are not yet confirmed for global",
+     "≈ 1200 ~ 1300 Accuracy",
+     "≈ 1600 ~ 1700 Crit",
+     "Boss 1 (Rahul): ≈ 123k"
+    ]
+   }
+  ]
+ },
+ {
   "syncedAt": "2026-11-06T06:30:30.689Z",
   "docLastUpdated": "11/05/2026",
   "changes": [
